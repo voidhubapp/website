@@ -277,9 +277,9 @@ def create_community_POST():
     return redirect(f"/v/{com.cname}")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
-        if sys.argv[3] == "--dev":
-            socketio.run(app,debug=True)
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--dev":
+            socketio.run(app, debug=True)
         else:
             socketio.run(app, "0.0.0.0", 80)
     else:
