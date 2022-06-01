@@ -1,4 +1,5 @@
 import json
+import sys
 from typing import List
 import requests
 from flask import Flask, jsonify, request, redirect, render_template, url_for, Response
@@ -276,4 +277,7 @@ def create_community_POST():
     return redirect(f"/v/{com.cname}")
 
 if __name__ == "__main__":
-    socketio.run(app,debug=True)
+    if len(sys.argv) > 2:
+        if sys.argv[3] == "--dev":
+            socketio.run(app,debug=True)
+    socketio.run(app, "0.0.0.0", 80)
