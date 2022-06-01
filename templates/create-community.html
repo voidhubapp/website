@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <title>VoidHub - New Community</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/v/all">All</a></li>
+            <li><a href="/v/oidhub">Official VoidHub</a></li>
+            <li><a href="/v/IamA">IamA</a></li>
+            <li><a href="/v/memes">Memes</a></li>
+            <li><a href="/login">Log in</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="create-community">
+    <form action="/create-community" method="post">
+        <div class="container">
+            <h3>name</h3>
+            <p>no spaces, e.g., "books" or "bookclub". avoid using solely trademarked names, e.g. use "FansOfVoidHub" instead of "VoidHub". once chosen, this name cannot be changed.</p>
+            <input name="community-name" value="books">
+        </div><br>
+        <div class="container">
+            <h3>display title</h3>
+            <p>e.g. "Books, a Nice way to pass your Time."</p>
+            <input name="community-display-name" value="Books!">
+        </div><br>
+        <div class="container">
+            <h3>create</h3>
+            <p>that's all! by clicking the button below, your community will be created.</p>
+            <input type="submit">
+        </div>
+    
+    </form>
+    </div>
+</body>
+</html>

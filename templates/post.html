@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        function upVote(community_name,post_id){
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", `/upvote/${community_name}/${post_id}`, false ); // false for synchronous request
+            xmlHttp.send( null );
+            jsonified = JSON.parse(xmlHttp.responseText);
+            document.getElementById("vote-count").innerText = jsonified.new_vote_count;
+        }
+
+        function downVote(community_name,post_id){
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "Get", `/downvote/${community_name}/${post_id}`, false ); // false for synchronous request
+            xmlHttp.send( null );
+            jsonified = JSON.parse(xmlHttp.responseText);
+            document.getElementById("vote-count").innerText = jsonified.new_vote_count;
+        }
+    </script>
+    <title>VoidHub - {{community.display_name}}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/v/all">All</a></li>
+            <li><a href="/v/oidhub">Official VoidHub</a></li>
+            <li><a href="/v/IamA">IamA</a></li>
+            <li><a href="/v/memes">Memes</a></li>
+            <li><a href="/login">Log in</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <a href="/v/{{community.cname}}">v/{{community.cname}}</a>
+    <hr>
+        <div class="post-card">
+        <h3>{{post.title}}</h3></a>
+        {% if post.body.startswith('http') %}
+        <img src="{{post.body}}" alt="{{post.body}}" width="100%">
+        {% else %}
+        <p>{{post.body}}</p>
+        {% endif %}
+        <button onclick="upVote('{{community.cname}}','{{post.id}}')">/\</button>
+        <div id="vote-count"></div>
+        <button onclick="downVote('{{community.cname}}','{{post.id}}')">\/</button>
+    </div>
+
+    
+</body>
+</html>

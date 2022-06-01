@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <title>VoidHub - Submit to {{community.display_name}}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/v/all">All</a></li>
+            <li><a href="/v/oidhub">Official VoidHub</a></li>
+            <li><a href="/v/IamA">IamA</a></li>
+            <li><a href="/v/memes">Memes</a></li>
+            <li><a href="/login">Log in</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="create-community">
+    <form action="/v/{{community.cname}}/new" method="post">
+        <div class="container">
+            <h3>title</h3>
+            <p></p>
+            <input name="post-title" value="...">
+        </div><br>
+        <div class="container">
+            <h3>content</h3>
+            <p>e.g. "This is a great Community, yes!". this can also contain image url'</p>
+            <input name="post-content" value="Books!">
+        </div><br>
+        <div class="container">
+            <h3>post</h3>
+            <p>click this button to submit your post. remember to follow the rules!</p>
+            <input type="submit">
+        </div>
+    
+    </form>
+    </div>
+</body>
+</html>
