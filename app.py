@@ -280,4 +280,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         if sys.argv[3] == "--dev":
             socketio.run(app,debug=True)
-    socketio.run(app, "0.0.0.0", 80)
+        else:
+            socketio.run(app, "0.0.0.0", 80)
+    else:
+        socketio.run(app, "0.0.0.0", 80)
